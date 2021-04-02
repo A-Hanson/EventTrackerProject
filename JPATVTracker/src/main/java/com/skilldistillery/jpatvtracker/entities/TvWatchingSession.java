@@ -20,6 +20,8 @@ public class TvWatchingSession {
 	
 	private LocalDateTime stop;
 	
+	private Boolean deleted;
+	
 	
 //	TODO: User and Platform
 	
@@ -53,9 +55,17 @@ public class TvWatchingSession {
 	}
 	
 
+	public Boolean getDeleted() {
+		return deleted;
+	}
+
+	public void setDeleted(Boolean deleted) {
+		this.deleted = deleted;
+	}
+
 	@Override
 	public String toString() {
-		return "TvWatchingSession [id=" + id + ", start=" + start + ", stop=" + stop + "]";
+		return "TvWatchingSession [id=" + id + ", start=" + start + ", stop=" + stop + ", deleted=" + deleted + "]";
 	}
 
 	@Override

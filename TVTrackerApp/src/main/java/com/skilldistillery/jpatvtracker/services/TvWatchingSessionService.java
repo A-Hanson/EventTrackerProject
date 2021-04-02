@@ -7,4 +7,7 @@ import com.skilldistillery.jpatvtracker.entities.TvWatchingSession;
 public interface TvWatchingSessionService {
 	List<TvWatchingSession> allTvWatchingSessions();
 	TvWatchingSession retrieveSession(int sessionId);
+	TvWatchingSession addSession(TvWatchingSession session);
+	TvWatchingSession updateSession(int id, TvWatchingSession session);
+	boolean softDeleteSession(int id);
 }

@@ -47,6 +47,7 @@ class TvWatchingSessionTest {
 		assertNotNull(tvWatchingSession);
 		assertEquals(2021, tvWatchingSession.getStart().getYear());
 		assertEquals(4, tvWatchingSession.getStop().getMonthValue());
+		assertFalse(tvWatchingSession.getDeleted());
 	}
 
 }

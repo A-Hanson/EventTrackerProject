@@ -55,6 +55,7 @@ CREATE TABLE IF NOT EXISTS `tv_watching_session` (
   `start` DATETIME NULL,
   `stop` DATETIME NULL,
   `platform_id` INT NOT NULL,
+  `deleted` VARCHAR(45) NULL DEFAULT 0,
   PRIMARY KEY (`id`),
   INDEX `fk_tv_watching_session_user_idx` (`user_id` ASC),
   INDEX `fk_tv_watching_session_platform1_idx` (`platform_id` ASC),
@@ -190,7 +191,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `tvdb`;
-INSERT INTO `tv_watching_session` (`id`, `user_id`, `start`, `stop`, `platform_id`) VALUES (1, 2, '2021-04-02 00:00:00', '2021-04-02 02:30:00', 1);
+INSERT INTO `tv_watching_session` (`id`, `user_id`, `start`, `stop`, `platform_id`, `deleted`) VALUES (1, 2, '2021-04-02 00:00:00', '2021-04-02 02:30:00', 1, '0');
 
 COMMIT;
 
