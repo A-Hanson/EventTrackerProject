@@ -11,6 +11,7 @@
     <!-- entities -->
     <class>com.skilldistillery.jpatvtracker.entities.TvWatchingSession</class>
     <class>com.skilldistillery.jpatvtracker.entities.User</class>
+    <class>com.skilldistillery.jpatvtracker.entities.Platform</class>
 
 
     <properties>
