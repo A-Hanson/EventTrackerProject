@@ -1,5 +1,7 @@
 package com.skilldistillery.jpatvtracker.entities;
 
+import java.time.LocalDateTime;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,7 +16,12 @@ public class TvWatchingSession {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
-	private Integer duration;
+	private LocalDateTime start;
+	
+	private LocalDateTime stop;
+	
+	
+//	TODO: User and Platform
 	
 //	Constructor
 	public TvWatchingSession() {}
@@ -28,20 +35,27 @@ public class TvWatchingSession {
 	public void setId(int id) {
 		this.id = id;
 	}
-
-	public Integer getDuration() {
-		return duration;
+	
+	public LocalDateTime getStart() {
+		return start;
 	}
 
-	public void setDuration(Integer duration) {
-		this.duration = duration;
+	public void setStart(LocalDateTime start) {
+		this.start = start;
+	}
+
+	public LocalDateTime getStop() {
+		return stop;
+	}
+
+	public void setStop(LocalDateTime stop) {
+		this.stop = stop;
 	}
 	
-	
-	
+
 	@Override
 	public String toString() {
-		return "TvWatchingSession [id=" + id + ", duration=" + duration + "]";
+		return "TvWatchingSession [id=" + id + ", start=" + start + ", stop=" + stop + "]";
 	}
 
 	@Override

@@ -45,7 +45,8 @@ class TvWatchingSessionTest {
 	@DisplayName("Test TV watching session mapping")
 	void test_1() {
 		assertNotNull(tvWatchingSession);
-		assertEquals(3, tvWatchingSession.getDuration());
+		assertEquals(2021, tvWatchingSession.getStart().getYear());
+		assertEquals(4, tvWatchingSession.getStop().getMonthValue());
 	}
 
 }
