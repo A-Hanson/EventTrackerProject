@@ -1,10 +1,14 @@
 package com.skilldistillery.jpatvtracker.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class User {
@@ -26,6 +30,9 @@ public class User {
 	private String role;
 	
 	private Boolean deleted;
+	
+	@OneToMany(mappedBy="user")
+	private List<TvWatchingSession> tvWatchingSessions;
 	
 //	Constructor
 	public User() {}
@@ -84,6 +91,36 @@ public class User {
 
 	public void setDeleted(Boolean deleted) {
 		this.deleted = deleted;
+	}
+
+	
+	
+	public List<TvWatchingSession> getTvWatchingSessions() {
+		return tvWatchingSessions;
+	}
+
+	public void setTvWatchingSessions(List<TvWatchingSession> tvWatchingSessions) {
+		this.tvWatchingSessions = tvWatchingSessions;
+	}
+	
+	public void addTvWatchingSession(TvWatchingSession tvWatchingSession) {
+		if (tvWatchingSessions == null) {
+			tvWatchingSessions = new ArrayList<>();
+		}
+		if (!tvWatchingSessions.contains(tvWatchingSession)) {
+			tvWatchingSessions.add(tvWatchingSession);
+			if (tvWatchingSession.getUser() != null) {
+				tvWatchingSession.getUser().getTvWatchingSessions().remove(tvWatchingSession);
+			}
+			tvWatchingSession.setUser(this);
+		}
+	}
+	
+	public void removeTvWatchingSession(TvWatchingSession tvWatchingSession) {
+		tvWatchingSession.setUser(null);
+		if (tvWatchingSessions != null) {
+			tvWatchingSessions.remove(tvWatchingSession);
+		}
 	}
 
 	@Override

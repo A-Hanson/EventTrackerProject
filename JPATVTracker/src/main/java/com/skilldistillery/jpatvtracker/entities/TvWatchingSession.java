@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -22,8 +24,10 @@ public class TvWatchingSession {
 	
 	private Boolean deleted;
 	
-	
-//	TODO: User and Platform
+	@ManyToOne
+	@JoinColumn(name="user_id")
+	private User user;
+//	TODO:  Platform
 	
 //	Constructor
 	public TvWatchingSession() {}
@@ -61,6 +65,16 @@ public class TvWatchingSession {
 
 	public void setDeleted(Boolean deleted) {
 		this.deleted = deleted;
+	}
+
+	
+	
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	@Override

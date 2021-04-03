@@ -33,14 +33,7 @@ public class TvWatchingSessionServiceImpl implements TvWatchingSessionService {
 
 	@Override
 	public TvWatchingSession addSession(TvWatchingSession session) {
-		try {
-			session = repo.save(session);
-		}
-		catch (IllegalArgumentException e) {
-			session = null;
-			System.err.println(e.getMessage());
-		}
-		return session;
+		return repo.save(session);
 	}
 
 	@Override

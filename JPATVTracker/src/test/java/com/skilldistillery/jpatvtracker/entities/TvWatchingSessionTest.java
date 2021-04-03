@@ -49,5 +49,13 @@ class TvWatchingSessionTest {
 		assertEquals(4, tvWatchingSession.getStop().getMonthValue());
 		assertFalse(tvWatchingSession.getDeleted());
 	}
+	
+	@Test
+	@DisplayName("Test TV watching session to User mapping")
+	void test_2() {
+		assertNotNull(tvWatchingSession);
+		assertNotNull(tvWatchingSession.getUser());
+		assertEquals("Betty", tvWatchingSession.getUser().getFirstName());
+	}
 
 }
