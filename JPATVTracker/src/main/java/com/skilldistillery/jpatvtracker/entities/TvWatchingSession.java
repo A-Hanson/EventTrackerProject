@@ -27,7 +27,10 @@ public class TvWatchingSession {
 	@ManyToOne
 	@JoinColumn(name="user_id")
 	private User user;
-//	TODO:  Platform
+	
+	@ManyToOne
+	@JoinColumn(name="platform_id")
+	private Platform platform;
 	
 //	Constructor
 	public TvWatchingSession() {}
@@ -68,13 +71,21 @@ public class TvWatchingSession {
 	}
 
 	
-	
 	public User getUser() {
 		return user;
 	}
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+	
+
+	public Platform getPlatform() {
+		return platform;
+	}
+
+	public void setPlatform(Platform platform) {
+		this.platform = platform;
 	}
 
 	@Override

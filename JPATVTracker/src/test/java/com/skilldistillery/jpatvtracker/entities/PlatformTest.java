@@ -46,5 +46,13 @@ class PlatformTest {
 		assertNotNull(platform);
 		assertEquals("Amazon Video", platform.getName());
 	}
+	
+	@Test
+	@DisplayName("Test Platform to Tv Watching Session Mapping")
+	void test_2() {
+		assertNotNull(platform);
+		assertNotNull(platform.getTvWatchingSessions());
+		assertTrue(platform.getTvWatchingSessions().size() > 0);
+	}
 
 }

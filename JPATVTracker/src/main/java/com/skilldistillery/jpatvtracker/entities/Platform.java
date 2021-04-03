@@ -1,9 +1,15 @@
 package com.skilldistillery.jpatvtracker.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Platform {
@@ -12,6 +18,10 @@ public class Platform {
 	private int id;
 	
 	private String name;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy="platform")
+	private List<TvWatchingSession> tvWatchingSessions;
 	
 //	Constructor
 	public Platform() {}
@@ -31,6 +41,32 @@ public class Platform {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+
+	public List<TvWatchingSession> getTvWatchingSessions() {
+		return tvWatchingSessions;
+	}
+
+	public void setTvWatchingSessions(List<TvWatchingSession> tvWatchingSessions) {
+		this.tvWatchingSessions = tvWatchingSessions;
+	}
+	
+	public void addTvWatchingSession(TvWatchingSession tvWatchingSession) {
+		if (tvWatchingSessions == null) {
+			tvWatchingSessions = new ArrayList<>();
+		}
+		if (!tvWatchingSessions.contains(tvWatchingSession)) {
+			tvWatchingSessions.add(tvWatchingSession);
+			tvWatchingSession.setPlatform(this);
+		}
+	}
+	
+	public void removeTvWatchingSession(TvWatchingSession tvWatchingSession) {
+		if (tvWatchingSessions != null && tvWatchingSessions.contains(tvWatchingSession)) {
+			tvWatchingSessions.remove(tvWatchingSession);
+			tvWatchingSession.setPlatform(null);
+		}
 	}
 
 	@Override

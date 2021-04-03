@@ -57,5 +57,13 @@ class TvWatchingSessionTest {
 		assertNotNull(tvWatchingSession.getUser());
 		assertEquals("Betty", tvWatchingSession.getUser().getFirstName());
 	}
+	
+	@Test
+	@DisplayName("Test TV Watching Session to Platform mapping")
+	void test_3() {
+		assertNotNull(tvWatchingSession);
+		assertNotNull(tvWatchingSession.getPlatform());
+		assertEquals("Amazon Video", tvWatchingSession.getPlatform().getName());
+	}
 
 }

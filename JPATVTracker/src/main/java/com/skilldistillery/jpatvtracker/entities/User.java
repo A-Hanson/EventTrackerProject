@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class User {
 	@Id
@@ -31,6 +33,7 @@ public class User {
 	
 	private Boolean deleted;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="user")
 	private List<TvWatchingSession> tvWatchingSessions;
 	
@@ -117,9 +120,9 @@ public class User {
 	}
 	
 	public void removeTvWatchingSession(TvWatchingSession tvWatchingSession) {
-		tvWatchingSession.setUser(null);
-		if (tvWatchingSessions != null) {
+		if (tvWatchingSessions != null && tvWatchingSessions.contains(tvWatchingSession)) {
 			tvWatchingSessions.remove(tvWatchingSession);
+			tvWatchingSession.setUser(null);
 		}
 	}
 
