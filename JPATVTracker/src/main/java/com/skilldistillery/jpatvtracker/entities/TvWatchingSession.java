@@ -90,7 +90,21 @@ public class TvWatchingSession {
 
 	@Override
 	public String toString() {
-		return "TvWatchingSession [id=" + id + ", start=" + start + ", stop=" + stop + ", deleted=" + deleted + "]";
+		StringBuilder builder = new StringBuilder();
+		builder.append("TvWatchingSession [id=");
+		builder.append(id);
+		builder.append(", start=");
+		builder.append(start);
+		builder.append(", stop=");
+		builder.append(stop);
+		builder.append(", deleted=");
+		builder.append(deleted);
+		builder.append(", user=");
+		builder.append(user);
+		builder.append(", platform=");
+		builder.append(platform);
+		builder.append("]");
+		return builder.toString();
 	}
 
 	@Override
