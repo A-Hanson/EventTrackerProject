@@ -153,7 +153,7 @@ CREATE TABLE IF NOT EXISTS `watching_session_episode` (
 ENGINE = InnoDB;
 
 SET SQL_MODE = '';
-DROP USER IF EXISTS tvuser@localhost;
+-- DROP USER tvuser@localhost;
 SET SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 CREATE USER 'tvuser'@'localhost' IDENTIFIED BY 'tvuser';
 
@@ -234,4 +234,3 @@ USE `tvdb`;
 INSERT INTO `watching_session_episode` (`tv_watching_session_id`, `episode_id`) VALUES (1, 1);
 
 COMMIT;
-
