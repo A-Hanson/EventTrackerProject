@@ -9,3 +9,4 @@
 | HTTP Method | Resource URI | Request Body | Returns |
 |-------------|--------------|--------------|---------|
 | GET         | `api/tv_watching_sessions` |    | List&lt;TvWatchingSession&gt; |
+| POST        | `api/tv_watching_sessions/{id}`|  | `TvWatchingSession`  |
