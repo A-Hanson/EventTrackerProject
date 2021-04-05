@@ -90,7 +90,7 @@ public class TvWatchingSessionController {
 	}
 	
 	@DeleteMapping("tv_watching_sessions/{id}")
-	public void updateSession(@PathVariable int id,
+	public void deleteSession(@PathVariable int id,
 			HttpServletResponse response) {
 		try {
 			boolean deleted = svc.softDeleteSession(id);
