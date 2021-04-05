@@ -32,7 +32,8 @@ public class TvWatchingSessionController {
 	
 	@GetMapping("tv_watching_sessions")
 	public List<TvWatchingSession> listSessions(){
-		return svc.allTvWatchingSessions();
+//		Returns TvWatchingSessions that have not been deleted
+		return svc.allActiveTvWatchingSessions(false);
 	}
 	
 	@GetMapping("tv_watching_sessions/{id}")

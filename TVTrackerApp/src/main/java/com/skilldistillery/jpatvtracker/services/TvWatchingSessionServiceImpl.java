@@ -21,12 +21,20 @@ public class TvWatchingSessionServiceImpl implements TvWatchingSessionService {
 	public List<TvWatchingSession> allTvWatchingSessions() {
 		return repo.findAll();
 	}
+	
+	@Override
+	public List<TvWatchingSession> allActiveTvWatchingSessions(Boolean deleted){
+		return repo.findByDeleted(deleted);
+	}
 
 	@Override
 	public TvWatchingSession retrieveSession(int sessionId) {
 		TvWatchingSession session = null;
 		if (repo.findById(sessionId).isPresent()) {
 			session = repo.findById(sessionId).get();
+			if (session.getDeleted()) {
+				session = null;
+			}
 		}
 		return session;
 	}
