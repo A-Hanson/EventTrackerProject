@@ -45,6 +45,8 @@ class PlatformTest {
 	void test_1() {
 		assertNotNull(platform);
 		assertEquals("Amazon Video", platform.getName());
+		assertNotNull(platform.getImageUrl());
+		assertFalse(platform.getDeleted());
 	}
 	
 	@Test

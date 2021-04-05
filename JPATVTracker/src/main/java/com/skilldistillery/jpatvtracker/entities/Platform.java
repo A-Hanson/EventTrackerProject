@@ -3,6 +3,7 @@ package com.skilldistillery.jpatvtracker.entities;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,6 +19,11 @@ public class Platform {
 	private int id;
 	
 	private String name;
+	
+	@Column(name="image_url")
+	private String imageUrl;
+	
+	private Boolean deleted;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy="platform")
@@ -69,9 +75,37 @@ public class Platform {
 		}
 	}
 
+	
+	
+	public String getImageUrl() {
+		return imageUrl;
+	}
+
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
+
+	public Boolean getDeleted() {
+		return deleted;
+	}
+
+	public void setDeleted(Boolean deleted) {
+		this.deleted = deleted;
+	}
+
 	@Override
 	public String toString() {
-		return "Platform [id=" + id + ", name=" + name + "]";
+		StringBuilder builder = new StringBuilder();
+		builder.append("Platform [id=");
+		builder.append(id);
+		builder.append(", name=");
+		builder.append(name);
+		builder.append(", imageUrl=");
+		builder.append(imageUrl);
+		builder.append(", deleted=");
+		builder.append(deleted);
+		builder.append("]");
+		return builder.toString();
 	}
 
 	@Override
