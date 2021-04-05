@@ -49,8 +49,12 @@ public class TvWatchingSessionServiceImpl implements TvWatchingSessionService {
 		TvWatchingSession sessionUpdated = null;
 		if (repo.findById(id).isPresent()) {
 			sessionUpdated = repo.findById(id).get();
-			sessionUpdated.setStart(session.getStart());
-			sessionUpdated.setStop(session.getStop());
+			if (session.getStart() != null) {
+				sessionUpdated.setStart(session.getStart());
+			}
+			if (session.getStop() != null) {
+				sessionUpdated.setStop(session.getStop());				
+			}
 		}
 		
 		return sessionUpdated;
