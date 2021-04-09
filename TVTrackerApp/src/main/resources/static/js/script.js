@@ -4,7 +4,23 @@ window.addEventListener('load', function(event) {
 });
 
 function init() {
-  loadTVSessions();
+  document.addSession.add.addEventListener('click', function (event) {
+    event.preventDefault();
+    createTVSession();
+  });
+  document.showAll.show.addEventListener('click', function (event) {
+    event.preventDefault();
+    loadTVSessions();
+  });
+  
+}
+
+function createTVSession(){
+// TODO
+}
+
+function displayTVSession(session){
+// TODO
 }
 
 function loadTVSessions() {
@@ -12,10 +28,8 @@ function loadTVSessions() {
   xhr.open('GET', 'api/tv_watching_sessions');
   xhr.onreadystatechange = function () {
     if (xhr.readyState === 4){
-      console.log("pass readyState")
       if (xhr.status === 200){
         let tvSessions = JSON.parse(xhr.responseText);
-        console.log(tvSessions);
         displayTVSessions(tvSessions);
       } else {
         displayError("Error retrieving TV Sessions: " + xhr.status);
@@ -30,7 +44,7 @@ function displayTVSessions(list) {
   let ul = document.createElement('ul');
   for (const session of list) {
     let li = document.createElement('li');
-    li.textContent = session;
+    li.textContent = session.platform.name;
     ul.appendChild(li);
   }
   div.appendChild(ul);
