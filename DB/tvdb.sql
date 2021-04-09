@@ -157,6 +157,33 @@ CREATE TABLE IF NOT EXISTS `watching_session_episode` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+
+-- -----------------------------------------------------
+-- Table `purchase`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `purchase` ;
+
+CREATE TABLE IF NOT EXISTS `purchase` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `date` DATE NULL,
+  `amount` DECIMAL NULL,
+  `user_id` INT NOT NULL,
+  `platform_id` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_purchase_user1_idx` (`user_id` ASC),
+  INDEX `fk_purchase_platform1_idx` (`platform_id` ASC),
+  CONSTRAINT `fk_purchase_user1`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `user` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_purchase_platform1`
+    FOREIGN KEY (`platform_id`)
+    REFERENCES `platform` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
 SET SQL_MODE = '';
 DROP USER IF EXISTS tvuser@localhost;
 SET SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
@@ -237,6 +264,16 @@ COMMIT;
 START TRANSACTION;
 USE `tvdb`;
 INSERT INTO `watching_session_episode` (`tv_watching_session_id`, `episode_id`) VALUES (1, 1);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `purchase`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `tvdb`;
+INSERT INTO `purchase` (`id`, `date`, `amount`, `user_id`, `platform_id`) VALUES (1, '2021-04-01', 14.99, 2, 2);
 
 COMMIT;
 
