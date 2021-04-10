@@ -44,11 +44,25 @@
           <input type="datetime-local" name="start" id="startTimeInput">
         </div>
         <div class="col">
-          <label for="endTimeInput">End</label>
-          <input type="datetime-local" name="end" id="startTimeInput">
+          <label for="stopTimeInput">Stop</label>
+          <input type="datetime-local" name="stop" id="stopTimeInput">
         </div>
       </div>
-        <button name="add" class="btn btn-primary">Add Session</button>
+      <div class="row gx-5">
+        <div class="col">
+          <select class="form-select" name="user">
+            <option selected>Select User</option>
+            <option value="1">Adam</option>
+            <option value="2">Betty</option>
+          </select>
+        </div>
+      </div>
+      <div class="row gx-5">
+        <div class="col">
+          <button name="add" class="btn btn-primary">Add Session</button>
+        </div>
+      </div>
+        
       </form>
     </div>
     <div id="tvSessionDetails" class="container px-4"></div>
