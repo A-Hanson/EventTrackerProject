@@ -76,6 +76,7 @@ public class TvWatchingSession {
 	}
 
 	public void setUser(User user) {
+		user.addTvWatchingSession(this);
 		this.user = user;
 	}
 	
@@ -85,6 +86,7 @@ public class TvWatchingSession {
 	}
 
 	public void setPlatform(Platform platform) {
+		platform.addTvWatchingSession(this);
 		this.platform = platform;
 	}
 

@@ -278,6 +278,7 @@ function updateFormForSessions(div, session, users, platforms){
   document.updatedSession.edit.addEventListener('click', function (event) {
     event.preventDefault();
     createUpdatedSession(session['id']);
+    div.textContent = '';
   });
 }
 
