@@ -182,7 +182,7 @@ function updateFormForSessions(div, session, users, platforms){
   let row1 = document.createElement('div');
   row1.className = "row gx-5";
   let platformLabel = document.createElement('h6');
-  platformLabel.textContent = "Platform";
+  platformLabel.textContent = "Platform (not updatable at the moment)";
   row1.appendChild(platformLabel);
 // Choose platform
   for (let i = 0; i < platforms.length; i++) {
@@ -245,7 +245,7 @@ function updateFormForSessions(div, session, users, platforms){
   let row4 = document.createElement('div');
   row4.className = "row gx-5";
   let userLabel = document.createElement('h6');
-  userLabel.textContent = "User";
+  userLabel.textContent = "User (not updatable at the moment)";
   row4.appendChild(userLabel);
   for (let i = 0; i < users.length; i++) {
     let col3 = document.createElement('div');
@@ -298,7 +298,8 @@ function sendUpdatedSessionToApi(id, updatedSesion){
   xhr.onreadystatechange = function () {
     if (xhr.readyState === 4){
       if (xhr.status === 200){
-        getTVSessionById(id);
+        let returnedUpdate = JSON.parse(xhr.responseText);
+        displayTVSession(returnedUpdate);
       } else if (xhr.status === 404){
         displayError("Could not find TV Session to update: " + xhr.status);
       } else {
