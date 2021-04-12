@@ -31,7 +31,7 @@ public class User {
 	
 	private String role;
 	
-	private Boolean deleted;
+	private Boolean deleted = false;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy="user")

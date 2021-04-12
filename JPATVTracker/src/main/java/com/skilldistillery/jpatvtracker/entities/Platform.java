@@ -23,7 +23,7 @@ public class Platform {
 	@Column(name="image_url")
 	private String imageUrl;
 	
-	private Boolean deleted;
+	private Boolean deleted = false;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy="platform")

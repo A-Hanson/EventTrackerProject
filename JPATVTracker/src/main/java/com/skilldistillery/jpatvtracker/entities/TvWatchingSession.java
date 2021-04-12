@@ -22,7 +22,7 @@ public class TvWatchingSession {
 	
 	private LocalDateTime stop;
 	
-	private Boolean deleted;
+	private Boolean deleted = false;
 	
 	@ManyToOne
 	@JoinColumn(name="user_id")

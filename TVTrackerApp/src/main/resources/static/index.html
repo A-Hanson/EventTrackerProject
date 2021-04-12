@@ -9,14 +9,33 @@
   <script src="js/script.js"></script>
 </head>
 <body>
-  <div class="container"></div>
+  <div class="container" id="testArea"></div>
   <header id="header">
     <h1>Welcome to the TV Tracker!</h1>
   </header>
   <main>
-    <div id="errors" class="container px-4"></div>
+    <div class="container px-4">
+      <div class="row gx-5">
+        <div class="col">
+          <form name="findSession">
+            <label for="id">Session Id</label>
+            <input type="form-number" name="id">
+            <button name="find" class="btn btn-primary">Find Session</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="container px-4">
+      <div class="row gx-5">
+        <div class="col"  id="errors">
+        </div>
+      </div>
+    </div>
+
     <div id="divAddSession" class="container px-4">
-      
+    <div class="row gx-5">
+      <div class="col">
+      <h3>Add a TV Watching Session</h3>
       <form name="addSession">
         <div class="row gx-5">
           <div class="col">
@@ -64,12 +83,24 @@
       </div>
         
       </form>
+      </div>
+      </div>
     </div>
-    <div id="tvSessionDetails" class="container px-4"></div>
-    <div id="tvSessionTable" class="container px-4">
-      <form name="showAll">
-        <button name="show" class="btn btn-primary">Show All</button>
-      </form>
+
+    <div>
+      <div class="row gx-5">
+        <div class="col container px-4" id="tvSessionDetails">
+        </div>
+      </div>
+    </div>
+    <div class="container px-4">
+      <div class="row gx-5">
+        <div class="col" id="tvSessionTable">
+          <form name="showAll">
+            <button name="show" class="btn btn-primary">Show All</button>
+          </form>
+      </div>
+      </div>
     </div>
   </main>
 
