@@ -8,7 +8,10 @@ This application keeps track of a user's tv watching sessions over time. It link
 
 ## How to Run
 
+API Access:
 Use the following base URL in combination with the Resource URI from the REST API section to access the project's current API endpoints. `http://3.13.173.184:8080/TVTrackerApp/`
+
+[Front End Access](http://3.13.173.184:8080/TVTrackerApp/)
 
 ---
 
