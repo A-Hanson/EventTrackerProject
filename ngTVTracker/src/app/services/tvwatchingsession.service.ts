@@ -25,4 +25,47 @@ export class TvwatchingsessionService {
       })
     );
   }
+  show(sessionId): Observable<TvWatchingSession> {
+    return this.http.get<TvWatchingSession>(this.url + '/' + sessionId)
+      .pipe(
+        catchError((err: any) => {
+          console.error("Service.index() error: " + err);
+          return throwError(err);
+        })
+      );
+
+  }
+
+  create(todo: TvWatchingSession): Observable<TvWatchingSession> {
+    return this.http.post<TvWatchingSession>(this.url, todo)
+      .pipe(
+        catchError((err: any) => {
+          console.error("Service.index() error: " + err);
+          return throwError(err);
+        })
+      );
+
+  }
+
+  update(id: number, todo: TvWatchingSession): Observable<TvWatchingSession> {
+    return this.http.put<TvWatchingSession>(this.url + '/' + id, todo).pipe(
+      catchError((err: any) => {
+        console.error("Service.index() error: " + err);
+        return throwError(err);
+      })
+    );
+
+  }
+
+  destroy(id: Number) {
+    return this.http.delete(this.url + '/' + id)
+      .pipe(
+        catchError((err: any) => {
+          console.error("Service.index() error: " + err);
+          return throwError(err);
+        })
+      );
+
+  }
+
 }

@@ -1,4 +1,48 @@
-<h1>TV Watching!!!!!</h1>
-<ul>
-  <li *ngFor="let sess of sessions">Session Start: {{sess.start}}</li>
-</ul>
+<div class="container">
+  <div class="container">
+    <h1>Welcome back [[USERNAME HERE]]</h1>
+  </div>
+  <div class="container">
+    <div class="row" *ngIf="!addNew">
+      <div class="col-md-3 g-3">
+        Watched anything since we saw you last?
+      </div>
+      <div class="col-md-3 g-3">
+        <input class="btn btn-info" type="button" value="Add a new session" (click)="addNew=true">
+      </div>
+    </div>
+    <div class="container" *ngIf="addNew">
+      <h5>Add new Session</h5>
+      <form>
+<!-- FINISH FORM -->
+      </form>
+    </div>
+    <table class="table table-striped table-hover align-middle" *ngIf="!addNew && !selected">
+      <thead>
+        <tr>
+          <th>Session Id</th>
+          <th>Start</th>
+          <th>Stop</th>
+          <th>Duration</th>
+          <th>Details</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let session of sessions">
+          <td>{{session.id}}</td>
+          <td>{{session.start | date: 'short'}}</td>
+          <td>{{session.stop | date: 'short'}}</td>
+          <td>{{duration(session.start, session.stop)}} minutes</td>
+          <!--  | date: 'hh:mm' -->
+          <td>
+            <input type="button" class="btn btn-info" value="Details">
+          </td>
+          <td>
+            <input type="button" class="btn btn-danger" value="Delete">
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

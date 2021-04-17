@@ -1,3 +1,4 @@
+import { formatDate } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { TvWatchingSession } from 'src/app/models/tv-watching-session';
 import { TvwatchingsessionService } from 'src/app/services/tvwatchingsession.service';
@@ -10,6 +11,10 @@ import { TvwatchingsessionService } from 'src/app/services/tvwatchingsession.ser
 export class TvWatchingSessionListComponent implements OnInit {
 
   sessions: TvWatchingSession[] = [];
+  selected: TvWatchingSession = null;
+  newSession: TvWatchingSession = new TvWatchingSession();
+  addNew: boolean = false;
+  editSession: boolean = false;
 
   constructor(
     private sessionService: TvwatchingsessionService
@@ -29,6 +34,12 @@ export class TvWatchingSessionListComponent implements OnInit {
 
       }
     );
+  }
+
+  duration(start: any, stop:any) {
+    let dur = Date.parse(stop) - Date.parse(start);
+    // let dur =  stop - start;
+    return (dur/60000);
   }
 
 }
