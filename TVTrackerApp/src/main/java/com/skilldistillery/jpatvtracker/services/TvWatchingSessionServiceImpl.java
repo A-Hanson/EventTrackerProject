@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.jpatvtracker.entities.TvWatchingSession;
+import com.skilldistillery.jpatvtracker.entities.User;
 import com.skilldistillery.jpatvtracker.repositories.PlatformRepository;
 import com.skilldistillery.jpatvtracker.repositories.TvWatchingSessionRepository;
 import com.skilldistillery.jpatvtracker.repositories.UserRepository;
@@ -22,7 +23,6 @@ public class TvWatchingSessionServiceImpl implements TvWatchingSessionService {
 	@Autowired
 	private PlatformRepository platformRepo;
 	
-	
 	@Autowired
 	private UserRepository userRepo;
 		
@@ -34,6 +34,11 @@ public class TvWatchingSessionServiceImpl implements TvWatchingSessionService {
 	@Override
 	public List<TvWatchingSession> allActiveTvWatchingSessions(Boolean deleted){
 		return repo.findByDeleted(deleted);
+	}
+	
+	@Override
+	public List<TvWatchingSession> allActiveSessionsByUser(String username) {
+		return repo.findByDeletedFalseAndUser_UserName(username);
 	}
 
 	@Override
@@ -47,10 +52,22 @@ public class TvWatchingSessionServiceImpl implements TvWatchingSessionService {
 		}
 		return session;
 	}
+	
+	@Override
+	public TvWatchingSession retrieveSessionByUser(int sessionId, String username) {
+		return repo.findByIdAndUser_UserName(sessionId, username);
+	}
 
 	@Override
-	public TvWatchingSession addSession(TvWatchingSession session) {
-		return repo.save(session);
+	public TvWatchingSession addSession(TvWatchingSession session, String username) {
+		User user = userRepo.findByUserName(username);
+		if (user != null) {
+			session.setUser(user);
+			repo.saveAndFlush(session);
+		} else {
+			session = null;
+		}
+		return session;
 	}
 
 	@Override

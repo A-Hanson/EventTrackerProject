@@ -8,4 +8,5 @@ import com.skilldistillery.jpatvtracker.entities.User;
 
 public interface UserRepository extends JpaRepository<User, Integer> {
 	List<User> findByDeleted(Boolean deleted);
+	User findByUserName(String username);
 }

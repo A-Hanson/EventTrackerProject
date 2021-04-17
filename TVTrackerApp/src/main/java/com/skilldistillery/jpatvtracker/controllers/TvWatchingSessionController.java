@@ -27,6 +27,8 @@ public class TvWatchingSessionController {
 	@Autowired
 	private TvWatchingSessionService svc;
 	
+	private String userName = "testuser"; // TEMPORARY
+	
 	@GetMapping("ping")
 	public String test() {
 		return "pong";
@@ -34,14 +36,15 @@ public class TvWatchingSessionController {
 	
 	@GetMapping("tv_watching_sessions")
 	public List<TvWatchingSession> listSessions(){
-//		Returns TvWatchingSessions that have not been deleted
-		return svc.allActiveTvWatchingSessions(false);
+//		Returns TvWatchingSessions that have not been deleted and by user
+		return svc.allActiveSessionsByUser(userName);
 	}
 	
 	@GetMapping("tv_watching_sessions/{id}")
 	public TvWatchingSession showSession(@PathVariable int id,
 			HttpServletResponse response){
-		TvWatchingSession session = svc.retrieveSession(id);
+//		TvWatchingSession session = svc.retrieveSession(id);
+		TvWatchingSession session = svc.retrieveSessionByUser(id, userName);
 		if (session == null) {
 			response.setStatus(404);
 		}
@@ -53,7 +56,7 @@ public class TvWatchingSessionController {
 			HttpServletResponse response,
 			HttpServletRequest request) {
 		try {
-			svc.addSession(tvWatchingSession);
+			svc.addSession(tvWatchingSession, userName);
 			response.setStatus(201);
 			StringBuffer url = request.getRequestURL();			
 			url.append("/").append(tvWatchingSession.getId());
