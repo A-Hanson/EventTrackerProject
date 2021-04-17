@@ -71,9 +71,9 @@ public class TvWatchingSessionServiceImpl implements TvWatchingSessionService {
 	}
 
 	@Override
-	public TvWatchingSession updateSession(int id, TvWatchingSession session) {
-		TvWatchingSession sessionUpdated = null;
-		if (repo.findById(id).isPresent()) {
+	public TvWatchingSession updateSession(int id, TvWatchingSession session, String username) {
+		TvWatchingSession sessionUpdated = repo.findByIdAndUser_UserName(id, username);
+		if (sessionUpdated != null) {
 			sessionUpdated = repo.findById(id).get();
 			if (session.getStart() != null) {
 				sessionUpdated.setStart(session.getStart());
@@ -99,9 +99,9 @@ public class TvWatchingSessionServiceImpl implements TvWatchingSessionService {
 	}
 
 	@Override
-	public boolean softDeleteSession(int id) {
+	public boolean softDeleteSession(int id, String username) {
 		boolean deleted = false;
-		if (repo.findById(id).isPresent()) {
+		if (repo.findByIdAndUser_UserName(id, username) != null) {
 			TvWatchingSession session = repo.findById(id).get();
 			session.setDeleted(true);
 			deleted = true;

@@ -76,7 +76,7 @@ public class TvWatchingSessionController {
 			HttpServletResponse response,
 			HttpServletRequest request) {
 		try {
-			tvWatchingSession = svc.updateSession(id, tvWatchingSession);
+			tvWatchingSession = svc.updateSession(id, tvWatchingSession, userName);
 			if (tvWatchingSession == null) {
 				response.setStatus(404);
 			}
@@ -98,7 +98,7 @@ public class TvWatchingSessionController {
 	public void deleteSession(@PathVariable int id,
 			HttpServletResponse response) {
 		try {
-			boolean deleted = svc.softDeleteSession(id);
+			boolean deleted = svc.softDeleteSession(id, userName);
 			if (deleted) {
 				response.setStatus(204);
 			} else {

@@ -11,6 +11,6 @@ public interface TvWatchingSessionService {
 	TvWatchingSession retrieveSession(int sessionId);
 	TvWatchingSession retrieveSessionByUser(int sessionId, String username);
 	TvWatchingSession addSession(TvWatchingSession session, String username);
-	TvWatchingSession updateSession(int id, TvWatchingSession session);
-	boolean softDeleteSession(int id);
+	TvWatchingSession updateSession(int id, TvWatchingSession session, String username);
+	boolean softDeleteSession(int id, String username);
 }
