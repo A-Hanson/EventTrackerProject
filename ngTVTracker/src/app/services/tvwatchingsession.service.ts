@@ -9,7 +9,7 @@ import { TvWatchingSession } from '../models/tv-watching-session';
 })
 export class TvwatchingsessionService {
 
-  private baseUrl = 'http://localhost:8084//';
+  private baseUrl = 'http://localhost:8084/';
   private url = this.baseUrl + "api/tv_watching_sessions";
 
   constructor(
